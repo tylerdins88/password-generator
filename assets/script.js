@@ -32,6 +32,7 @@ function generatePassword() {
       alert("No password will be generated.")
     }
   }
+  userInput = "";
 };
 
 function passwordCharacters() {
@@ -55,8 +56,6 @@ function passwordCharacters() {
     userInput += specialCharacters
   };
 
-  console.log(userInput);
-
   if (includeLower === false && includeUpper === false && includeNumbers === false && includeSpecial === false) {
     var restart = confirm("Please include at least one password criteria.")
     if (restart === true) {
@@ -74,6 +73,11 @@ function passwordCharacters() {
   var userPass = userInput.split("");
   console.log(userPass);
 
-
-
+  for (i = 0; i < passwordLength.length; i++) {
+    var userChar = Math.floor(Math.random() * userPass.length);
+    var userPassword = userPass[userChar];
+    console.log(userPassword);
+  }
 };
+
+//need to reset userInput upon clicking generate password
