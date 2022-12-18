@@ -5,7 +5,6 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 };
 
@@ -27,7 +26,6 @@ function generatePassword() {
   userInput = "";
   passwordHere = "";
   passwordLength = prompt("How many characters would you like your password to be?");
-
   if (passwordLength > 8 && passwordLength < 128) {
     passwordCharacters();
   } else {
