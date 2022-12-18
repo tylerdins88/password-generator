@@ -22,13 +22,17 @@ var userPassword;
 var randomChar;
 
 function generatePassword() {
-  passwordLength = prompt("How long would you like your password to be?");
+  passwordLength = prompt("How many characters would you like your password to be?");
 
   if (passwordLength > 8 && passwordLength < 128) {
     passwordCharacters();
   } else {
-    alert("Please choose a number between of characters between 8 and 128.")
-    generatePassword();
+    var verify = confirm("Please choose a number between of characters between 8 and 128.")
+    if (verify === true) {
+      generatePassword();
+    } else {
+      alert("No password will be generated.")
+    }
   }
 };
 
@@ -63,7 +67,7 @@ function passwordCharacters() {
       if (areYouSure === true) {
         passwordCharacters();
       } else {
-        alert("No password will be generatored.")
+        alert("No password will be generated.")
       }
     }
   }
