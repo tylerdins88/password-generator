@@ -17,9 +17,12 @@ var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var numbers = "0123456789"
 var specialCharacters = "\"!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 var userInput = "";
-var passwordLength;
+var passwordLength = 0;
+var passwordHere = "";
 
 function generatePassword() {
+  userInput = "";
+  passwordHere = "";
   passwordLength = prompt("How many characters would you like your password to be?");
 
   if (passwordLength > 8 && passwordLength < 128) {
@@ -32,7 +35,8 @@ function generatePassword() {
       alert("No password will be generated.")
     }
   }
-  userInput = "";
+  console.log(passwordHere);
+  return passwordHere;
 };
 
 function passwordCharacters() {
@@ -72,12 +76,11 @@ function passwordCharacters() {
 
   var userPass = userInput.split("");
   console.log(userPass);
+  console.log(passwordLength);
 
-  for (i = 0; i < passwordLength.length; i++) {
-    var userChar = Math.floor(Math.random() * userPass.length);
-    var userPassword = userPass[userChar];
-    console.log(userPassword);
+  for (i = 0; i <= passwordLength; i++) {
+    var randomChar = Math.floor(Math.random() * userPass.length);
+    var userPassword = userPass[randomChar];
+    passwordHere += userPassword;
   }
 };
-
-//need to reset userInput upon clicking generate password
