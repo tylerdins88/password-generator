@@ -12,14 +12,17 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// Variables that hold the different sets of password criteria
 var lowerCase = "abcdefghijklmnopqrstuvwxyz"
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var numbers = "0123456789"
 var specialCharacters = "\"!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+// Variables that hold the users input criteria and password
 var userInput = "";
 var passwordLength = 0;
 var passwordHere = "";
 
+// Function that generates password
 function generatePassword() {
   userInput = "";
   passwordHere = "";
@@ -39,6 +42,7 @@ function generatePassword() {
   return passwordHere;
 };
 
+// This section is a function that creates an array of password criteria based on user input
 function passwordCharacters() {
   var includeLower = confirm("Would you like to include lowercase letters in your password?");
   if (includeLower === true) {
@@ -74,10 +78,12 @@ function passwordCharacters() {
     }
   }
 
+  // These lines tell you the array of criteria to be used for the password
   var userPass = userInput.split("");
   console.log(userPass);
   console.log(passwordLength);
 
+  // This loop selects random criteria from the criteria array and puts them together to create the password
   for (i = 0; i <= passwordLength; i++) {
     var randomChar = Math.floor(Math.random() * userPass.length);
     var userPassword = userPass[randomChar];
