@@ -1,6 +1,6 @@
-## Password-Generator
+# Password-Generator
 
-# Description
+## Description
 
 I have created a random password generator webpage. When a user visits this page, there is a button to click to generate a password. Once clicked, they are prompted with a serious of questions to create the password. First they are asked to select a length between 8-128. Then they are asked four questions which include; Would you like to use lowercase letters, would you like to include uppercase letters, would you like to include numbers, and would you like to include special characters?
 
@@ -12,7 +12,7 @@ Another feature that I used was prompt's as well as booleans. The prompt to ask 
 
 ![Screenshot](./assets/images/prompt-asking-criteria-question.png)
 
-# Usage
+## Usage
 
 To use this site, simply visit the webpage. Then click the "Generate Password" button to bring about the prompts asking you the required items for the password.
 
@@ -20,7 +20,7 @@ You can view and you this web application here:
 
 https://tylerdins88.github.io/password-generator/
 
-# License
+## License
 
 This feature a MIT License.
 
