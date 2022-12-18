@@ -18,8 +18,6 @@ var numbers = "0123456789"
 var specialCharacters = "\"!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 var userInput = "";
 var passwordLength;
-var userPassword;
-var randomChar;
 
 function generatePassword() {
   passwordLength = prompt("How many characters would you like your password to be?");
@@ -57,13 +55,14 @@ function passwordCharacters() {
     userInput += specialCharacters
   };
 
+  console.log(userInput);
+
   if (includeLower === false && includeUpper === false && includeNumbers === false && includeSpecial === false) {
     var restart = confirm("Please include at least one password criteria.")
     if (restart === true) {
       passwordCharacters();
     } else {
       var areYouSure = confirm("Do you still want to make a password?")
-
       if (areYouSure === true) {
         passwordCharacters();
       } else {
@@ -72,18 +71,9 @@ function passwordCharacters() {
     }
   }
 
-  console.log(userInput);
-
   var userPass = userInput.split("");
-
   console.log(userPass);
 
-  // for (i = 0; i < passwordLength.length; i++) {
-  //   userPassword = Math.floor(Math.random() * userPass.length);
 
-  //   var randomChar += userPass[userPassword];
-  // }
-
-  // console.log(randomChar);
 
 };
