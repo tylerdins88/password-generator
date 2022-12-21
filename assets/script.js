@@ -29,20 +29,26 @@ function generatePassword() {
   if (passwordLength >= 8 && passwordLength <= 128) {
     passwordCharacters();
   } else {
-    var verify = confirm("Please choose a number between of characters between 8 and 128.")
-    if (verify === true) {
-      generatePassword();
-    } else {
-      alert("No password will be generated.")
-    }
+    areYouSure();
   }
   console.log(passwordHere);
   return passwordHere;
 };
 
+// This is the function if the user decides they no longer want to generate a password. 
+function areYouSure() {
+  var pleaseConfirm = confirm("Do you still want to make a password?")
+  if (pleaseConfirm === true) {
+    generatePassword();
+  } else {
+    alert("No password will be generated.");
+  }
+};
+
 // This section is a function that creates an array of password criteria based on user input
 function passwordCharacters() {
   var includeLower = confirm("Would you like to include lowercase letters in your password?");
+
   if (includeLower === true) {
     userInput += lowerCase
   };
@@ -67,24 +73,108 @@ function passwordCharacters() {
     if (restart === true) {
       passwordCharacters();
     } else {
-      var areYouSure = confirm("Do you still want to make a password?")
-      if (areYouSure === true) {
-        passwordCharacters();
-      } else {
-        alert("No password will be generated.")
+      areYouSure();
+    }
+  }
+
+
+  // These lines tell you the array of criteria to be used for the password
+  var userPass = userInput.split([]);
+  console.log(userPass);
+  console.log(passwordLength);
+  var passwordHereARR = [];
+  // This loop selects random criteria from the criteria array and puts them together to create the password
+  function makeNewPass() {
+    for (i = 0; i <= passwordLength; i++) {
+      var randomChar = Math.floor(Math.random() * userPass.length);
+      var passwordRand = userPass[randomChar];
+      passwordHere += passwordRand;
+      passwordHereARR = passwordHere.split([]);
+      checkPassword(passwordHereARR);
+      console.log("checked");
+    }
+  }
+
+  function checkPassword() {
+    // var lowerCaseARR = lowerCase.split([]);
+    // console.log(lowerCaseARR);
+    // var upperCaseARR = upperCase.split([]);
+    // console.log(upperCaseARR);
+    // var numbersARR = numbers.split([]);
+    // console.log(numbersARR);
+    // var specialCharactersARR = specialCharacters.split([]);
+    // console.log(specialCharactersARR);
+    for (i = 0; i < passwordHereARR.length; i++) {
+      if (includeLower === true && includeUpper === true && includeNumbers === true && includeSpecial === true) {
+        if (passwordHere.includes(lowerCase && upperCase && numbers && specialCharacters)) {
+          console.log("checked");
+          return;
+        } else {
+          makeNewPass();
+        }
       }
     }
   }
 
-  // These lines tell you the array of criteria to be used for the password
-  var userPass = userInput.split("");
-  console.log(userPass);
-  console.log(passwordLength);
-
-  // This loop selects random criteria from the criteria array and puts them together to create the password
-  for (i = 0; i <= passwordLength; i++) {
-    var randomChar = Math.floor(Math.random() * userPass.length);
-    var userPassword = userPass[randomChar];
-    passwordHere += userPassword;
-  }
+  makeNewPass();
 };
+
+// var lowerCaseARR = lowerCase.split([]);
+// console.log(lowerCaseARR);
+// var upperCaseARR = upperCase.split([]);
+// console.log(upperCaseARR);
+// var numbersARR = numbers.split([]);
+// console.log(numbersARR);
+// var specialCharactersARR = specialCharacters.split([]);
+// console.log(specialCharactersARR);
+
+
+
+
+
+
+
+
+
+// function checkPassword() {
+//   for (i = 0; i < passwordHere.length; i++) {
+//     if (includeLower === true && includeUpper === true && includeNumbers === true && includeSpecial === true) {
+//       if (passwordHere[i].includes(!lowerCase && !upperCase && !numbers && !specialCharacters)) {
+//         console.log("checked");
+//         makeNewPass();
+//       }
+//     }
+//   }
+// }
+
+// // This for loop is my check to make sure the criteria chosen by the user is included in the password. 
+// for (i = 0; i < passwordHere.length; i++) {
+//   console.log("checked");
+//   if (includeLower === true && includeUpper === true && includeNumbers === true && includeSpecial === true) {
+//     if (passwordHere[i].includes(!lowerCase && !upperCase && !numbers && !specialCharacters)) {
+//       makeNewPass();
+//     }
+//   } else if (includeLower === true && includeUpper === true && includeNumbers === true) {
+//     passwordHere[i].includes(lowerCase && upperCase && numbers)
+//   } else if (includeLower === true && includeUpper === true && includeSpecial === true) {
+//     passwordHere[i].includes(lowerCase && upperCase && specialCharacters)
+//   } else if (includeLower === true && includeNumbers === true && includeSpecial === true) {
+//     passwordHere[i].includes(lowerCase && numbers && specialCharacters)
+//   } else if (includeUpper === true && includeNumbers === true && includeSpecial === true) {
+//     passwordHere[i].includes(upperCase && numbers && specialCharacters)
+//   } else if (includeLower === true && includeUpper === true) {
+//     passwordHere[i].includes(lowerCase && upperCase)
+//   } else if (includeLower === true && includeNumbers === true) {
+//     passwordHere[i].includes(lowerCase && numbers)
+//   } else if (includeLower === true && includeSpecial === true) {
+//     passwordHere[i].includes(lowerCase && specialCharacters)
+//   } else if (includeUpper === true && includeNumbers === true) {
+//     passwordHere[i].includes(upperCase && numbers)
+//   } else if (includeUpper === true && includeSpecial === true) {
+//     passwordHere[i].includes(upperCase && specialCharacters)
+//   } else if (includeNumbers === true && includeSpecial === true) {
+//     passwordHere[i].includes(numbers && specialCharacters)
+//   } else {
+//     makeNewPass();
+//   }
+// }
