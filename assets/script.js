@@ -87,7 +87,7 @@ function passwordCharacters() {
   }
 
   // This function checks my password to make sure all of the criteria is included.
-  function checkPassword(passwordHere) {
+  function checkPassword() {
     var lowerCaseCheck = false;
     var upperCaseCheck = false;
     var numbersCheck = false;
