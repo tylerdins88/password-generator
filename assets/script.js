@@ -27,7 +27,7 @@ function generatePassword() {
   passwordHere = "";
   passwordLength = prompt("How many characters would you like your password to be?");
   if (passwordLength >= 8 && passwordLength <= 128) {
-    return passwordCharacters();
+    passwordCharacters();
   } else {
     areYouSure();
   }
@@ -83,7 +83,7 @@ function passwordCharacters() {
       var passwordRand = userPassCriteria[randomChar];
       passwordHere += passwordRand;
     }
-    return checkPassword(passwordHere);
+    checkPassword(passwordHere);
   }
 
   // This function checks my password to make sure all of the criteria is included.
@@ -131,11 +131,11 @@ function passwordCharacters() {
     console.log(passwordHere);
     // If all characters are included, the password is returned. 
     if (lowerCaseCheck && upperCaseCheck && numbersCheck && specialCheck) {
-      return passwordHere;
+      passwordHere;
       // If all characters are not included, a new password is made.
     } else {
-      return makeNewPass();
+      makeNewPass();
     }
   }
-  return makeNewPass();
+  makeNewPass();
 };
