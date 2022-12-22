@@ -31,6 +31,7 @@ function generatePassword() {
   } else {
     areYouSure();
   }
+  return passwordHere;
 };
 
 // This is the function if the user decides they no longer want to generate a password. 
@@ -46,19 +47,19 @@ function areYouSure() {
 // This section is a function that creates an array of password criteria based on user input.
 function passwordCharacters() {
   var includeLower = confirm("Would you like to include lowercase letters in your password?");
-  if (includeLower) {
+  if (includeLower === true) {
     userInput += lowerCase
   };
   var includeUpper = confirm("Would you like to include uppercase letters in your password?");
-  if (includeUpper) {
+  if (includeUpper === true) {
     userInput += upperCase
   };
   var includeNumbers = confirm("Would you like to include numbers in your password?");
-  if (includeNumbers) {
+  if (includeNumbers === true) {
     userInput += numbers
   };
   var includeSpecial = confirm("Would you like to include special characters in your password?");
-  if (includeSpecial) {
+  if (includeSpecial === true) {
     userInput += specialCharacters
   };
   if (includeLower === false && includeUpper === false && includeNumbers === false && includeSpecial === false) {
@@ -71,7 +72,7 @@ function passwordCharacters() {
   }
 
   // These lines tell you the array of criteria to be used for the password.
-  var userPassCriteria = userInput.split("");
+  var userPassCriteria = userInput.split([]);
   console.log(userPassCriteria);
   console.log(passwordLength);
 
@@ -87,11 +88,7 @@ function passwordCharacters() {
   }
 
   // This function checks my password to make sure all of the criteria is included.
-  function checkPassword() {
-    console.log(includeLower);
-    console.log(includeUpper);
-    console.log(includeNumbers);
-    console.log(includeSpecial);
+  function checkPassword(passwordHere) {
     var lowerCaseCheck = false;
     var upperCaseCheck = false;
     var numbersCheck = false;
@@ -104,7 +101,6 @@ function passwordCharacters() {
           lowerCaseCheck = true;
         }
       }
-      console.log(lowerCaseCheck);
     }
     // This checks for the uppercase characters.
     if (includeUpper) {
@@ -114,7 +110,6 @@ function passwordCharacters() {
           upperCaseCheck = true;
         }
       }
-      console.log(upperCaseCheck);
     }
     // This checks for the numbers characters.
     if (includeNumbers) {
@@ -124,7 +119,6 @@ function passwordCharacters() {
           numbersCheck = true;
         }
       }
-      console.log(numbersCheck);
     }
     // This checks for special characters.
     if (includeSpecial) {
@@ -134,7 +128,6 @@ function passwordCharacters() {
           specialCheck = true;
         }
       }
-      console.log(specialCheck);
     }
     console.log(passwordHere);
     // If all characters are included, the password is returned. 
