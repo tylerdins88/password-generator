@@ -25,13 +25,12 @@ var passwordHere = "";
 function generatePassword() {
   userInput = "";
   passwordHere = "";
-  passwordLength = prompt("How many characters would you like your password to be?");
+  passwordLength = prompt("How many characters would you like your password to be? Please choose a number between 8 and 128.");
   if (passwordLength >= 8 && passwordLength <= 128) {
     passwordCharacters();
   } else {
     areYouSure();
   }
-  return passwordHere;
 };
 
 // This is the function if the user decides they no longer want to generate a password. 
@@ -47,19 +46,19 @@ function areYouSure() {
 // This section is a function that creates an array of password criteria based on user input.
 function passwordCharacters() {
   var includeLower = confirm("Would you like to include lowercase letters in your password?");
-  if (includeLower === true) {
+  if (includeLower) {
     userInput += lowerCase
   };
   var includeUpper = confirm("Would you like to include uppercase letters in your password?");
-  if (includeUpper === true) {
+  if (includeUpper) {
     userInput += upperCase
   };
   var includeNumbers = confirm("Would you like to include numbers in your password?");
-  if (includeNumbers === true) {
+  if (includeNumbers) {
     userInput += numbers
   };
   var includeSpecial = confirm("Would you like to include special characters in your password?");
-  if (includeSpecial === true) {
+  if (includeSpecial) {
     userInput += specialCharacters
   };
   if (includeLower === false && includeUpper === false && includeNumbers === false && includeSpecial === false) {
@@ -72,7 +71,7 @@ function passwordCharacters() {
   }
 
   // These lines tell you the array of criteria to be used for the password.
-  var userPassCriteria = userInput.split([]);
+  var userPassCriteria = userInput.split("");
   console.log(userPassCriteria);
   console.log(passwordLength);
 
@@ -89,51 +88,86 @@ function passwordCharacters() {
 
   // This function checks my password to make sure all of the criteria is included.
   function checkPassword() {
+    console.log(includeLower);
+    console.log(includeUpper);
+    console.log(includeNumbers);
+    console.log(includeSpecial);
     var lowerCaseCheck = false;
     var upperCaseCheck = false;
     var numbersCheck = false;
     var specialCheck = false;
     // This checks for the lowercase characters.
-    if (includeLower === true) {
+    if (includeLower) {
       var lowerCaseARR = lowerCase.split([]);
       for (i = 0; i < lowerCaseARR.length; i++) {
         if (passwordHere.includes(lowerCaseARR[i])) {
           lowerCaseCheck = true;
         }
       }
+      console.log(lowerCaseCheck);
     }
     // This checks for the uppercase characters.
-    if (includeUpper === true) {
+    if (includeUpper) {
       var upperCaseARR = upperCase.split([]);
       for (i = 0; i < upperCaseARR.length; i++) {
         if (passwordHere.includes(upperCaseARR[i])) {
           upperCaseCheck = true;
         }
       }
+      console.log(upperCaseCheck);
     }
     // This checks for the numbers characters.
-    if (includeNumbers === true) {
+    if (includeNumbers) {
       var numbersARR = numbers.split([]);
       for (i = 0; i < numbersARR.length; i++) {
         if (passwordHere.includes(numbersARR[i])) {
           numbersCheck = true;
         }
       }
+      console.log(numbersCheck);
     }
     // This checks for special characters.
-    if (includeSpecial === true) {
+    if (includeSpecial) {
       var specialARR = specialCharacters.split([]);
       for (i = 0; i < specialARR.length; i++) {
         if (passwordHere.includes(specialARR[i])) {
           specialCheck = true;
         }
       }
+      console.log(specialCheck);
     }
     console.log(passwordHere);
     // If all characters are included, the password is returned. 
     if (lowerCaseCheck && upperCaseCheck && numbersCheck && specialCheck) {
       passwordHere;
-      // If all characters are not included, a new password is made.
+    } else if (lowerCaseCheck && upperCaseCheck && numbersCheck) {
+      passwordHere;
+    } else if (lowerCaseCheck & upperCaseCheck && specialCheck) {
+      passwordHere;
+    } else if (lowerCaseCheck && numbersCheck && specialCheck) {
+      passwordHere;
+    } else if (upperCaseCheck && numbersCheck && specialCheck) {
+      passwordHere;
+    } else if (lowerCaseCheck && upperCaseCheck) {
+      passwordHere;
+    } else if (lowerCaseCheck && numbersCheck) {
+      passwordHere;
+    } else if (lowerCaseCheck && specialCheck) {
+      passwordHere;
+    } else if (upperCaseCheck && numbersCheck) {
+      passwordHere;
+    } else if (upperCaseCheck && specialCheck) {
+      passwordHere;
+    } else if (numbersCheck && specialCheck) {
+      passwordHere;
+    } else if (lowerCaseCheck) {
+      passwordHere;
+    } else if (upperCaseCheck) {
+      passwordHere;
+    } else if (numbersCheck) {
+      passwordHere;
+    } else if (specialCheck) {
+      passwordHere;
     } else {
       makeNewPass();
     }
