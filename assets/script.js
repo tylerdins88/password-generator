@@ -20,6 +20,7 @@ var specialCharacters = "\"!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 var userInput = "";
 var passwordLength = 0;
 var passwordHere = "";
+var userPassword = "";
 
 // Function that generates password.
 function generatePassword() {
@@ -31,7 +32,7 @@ function generatePassword() {
   } else {
     areYouSure();
   }
-  return passwordHere;
+  return userPassword;
 };
 
 // This is the function if the user decides they no longer want to generate a password. 
@@ -46,21 +47,34 @@ function areYouSure() {
 
 // This section is a function that creates an array of password criteria based on user input.
 function passwordCharacters() {
+  var guaranteedCriteria = "";
   var includeLower = confirm("Would you like to include lowercase letters in your password?");
+  var lowerCaseSelect = "";
   if (includeLower === true) {
     userInput += lowerCase
+    lowerCaseSelect = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    guaranteedCriteria += lowerCaseSelect;
   };
   var includeUpper = confirm("Would you like to include uppercase letters in your password?");
+  var upperCaseSelect = "";
   if (includeUpper === true) {
     userInput += upperCase
+    upperCaseSelect = upperCase[Math.floor(Math.random() * upperCase.length)];
+    guaranteedCriteria += upperCaseSelect;
   };
   var includeNumbers = confirm("Would you like to include numbers in your password?");
+  var numbersSelect = "";
   if (includeNumbers === true) {
     userInput += numbers
+    numbersSelect = numbers[Math.floor(Math.random() * numbers.length)];
+    guaranteedCriteria += numbersSelect;
   };
   var includeSpecial = confirm("Would you like to include special characters in your password?");
+  var specialSelect = "";
   if (includeSpecial === true) {
     userInput += specialCharacters
+    specialSelect = specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
+    guaranteedCriteria += specialSelect;
   };
   if (includeLower === false && includeUpper === false && includeNumbers === false && includeSpecial === false) {
     var restart = confirm("Please include at least one password criteria.")
@@ -75,95 +89,16 @@ function passwordCharacters() {
   var userPassCriteria = userInput.split([]);
   console.log(userPassCriteria);
   console.log(passwordLength);
+  console.log(guaranteedCriteria);
 
   // This loop selects random criteria from the criteria array and puts them together to create the password.
   function makeNewPass() {
-    passwordHere = "";
-    for (i = 0; i <= passwordLength; i++) {
+    for (i = 0; i <= (passwordLength - guaranteedCriteria.length - 1); i++) {
       var randomChar = Math.floor(Math.random() * userPassCriteria.length);
       var passwordRand = userPassCriteria[randomChar];
       passwordHere += passwordRand;
     }
-    checkPassword(passwordHere);
-  }
-
-  // This function checks my password to make sure all of the criteria is included.
-  function checkPassword(passwordHere) {
-    var lowerCaseCheck = false;
-    var upperCaseCheck = false;
-    var numbersCheck = false;
-    var specialCheck = false;
-    // This checks for the lowercase characters.
-    if (includeLower) {
-      var lowerCaseARR = lowerCase.split([]);
-      for (i = 0; i < lowerCaseARR.length; i++) {
-        if (passwordHere.includes(lowerCaseARR[i])) {
-          lowerCaseCheck = true;
-        }
-      }
-    }
-    // This checks for the uppercase characters.
-    if (includeUpper) {
-      var upperCaseARR = upperCase.split([]);
-      for (i = 0; i < upperCaseARR.length; i++) {
-        if (passwordHere.includes(upperCaseARR[i])) {
-          upperCaseCheck = true;
-        }
-      }
-    }
-    // This checks for the numbers characters.
-    if (includeNumbers) {
-      var numbersARR = numbers.split([]);
-      for (i = 0; i < numbersARR.length; i++) {
-        if (passwordHere.includes(numbersARR[i])) {
-          numbersCheck = true;
-        }
-      }
-    }
-    // This checks for special characters.
-    if (includeSpecial) {
-      var specialARR = specialCharacters.split([]);
-      for (i = 0; i < specialARR.length; i++) {
-        if (passwordHere.includes(specialARR[i])) {
-          specialCheck = true;
-        }
-      }
-    }
-    console.log(passwordHere);
-    // If all characters are included, the password is returned. 
-    if (lowerCaseCheck && upperCaseCheck && numbersCheck && specialCheck) {
-      passwordHere;
-    } else if (lowerCaseCheck && upperCaseCheck && numbersCheck) {
-      passwordHere;
-    } else if (lowerCaseCheck & upperCaseCheck && specialCheck) {
-      passwordHere;
-    } else if (lowerCaseCheck && numbersCheck && specialCheck) {
-      passwordHere;
-    } else if (upperCaseCheck && numbersCheck && specialCheck) {
-      passwordHere;
-    } else if (lowerCaseCheck && upperCaseCheck) {
-      passwordHere;
-    } else if (lowerCaseCheck && numbersCheck) {
-      passwordHere;
-    } else if (lowerCaseCheck && specialCheck) {
-      passwordHere;
-    } else if (upperCaseCheck && numbersCheck) {
-      passwordHere;
-    } else if (upperCaseCheck && specialCheck) {
-      passwordHere;
-    } else if (numbersCheck && specialCheck) {
-      passwordHere;
-    } else if (lowerCaseCheck) {
-      passwordHere;
-    } else if (upperCaseCheck) {
-      passwordHere;
-    } else if (numbersCheck) {
-      passwordHere;
-    } else if (specialCheck) {
-      passwordHere;
-    } else {
-      makeNewPass();
-    }
+    userPassword = passwordHere.concat(guaranteedCriteria);
   }
   makeNewPass();
-};
+}
