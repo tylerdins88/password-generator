@@ -51,8 +51,8 @@ function passwordCharacters() {
   var guaranteedCriteria = ""; // This is a variable to ensure at least one of all criteria selected is included. 
   var includeLower = confirm("Would you like to include lowercase letters in your password?");
   if (includeLower === true) {
-    userInput += lowerCase
-    guaranteedCriteria += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    userInput += lowerCase // This will create a massive array to pull random characters from. 
+    guaranteedCriteria += lowerCase[Math.floor(Math.random() * lowerCase.length)]; // This makes a string to ensure at least 1 of the criteria is included. 
   };
   var includeUpper = confirm("Would you like to include uppercase letters in your password?");
   if (includeUpper === true) {
@@ -91,6 +91,7 @@ function passwordCharacters() {
       var passwordRand = userPassCriteria[randomChar];
       passwordHere += passwordRand;
     }
+    // This takes the random characters chosen and adds the guaranteed criteria to ensure proper length and all criteria included.
     userPassword = passwordHere.concat(guaranteedCriteria);
   }
   makeNewPass();
