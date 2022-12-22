@@ -31,6 +31,7 @@ function generatePassword() {
   } else {
     areYouSure();
   }
+  return passwordHere;
 };
 
 // This is the function if the user decides they no longer want to generate a password. 
