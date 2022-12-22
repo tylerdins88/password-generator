@@ -35,7 +35,8 @@ function generatePassword() {
   return userPassword;
 };
 
-// This is the function if the user decides they no longer want to generate a password. 
+// This is the function if the user decides they no longer want to generate a password or tries to choose
+// a character amount less than 8, greater than 128, or something other than a number. 
 function areYouSure() {
   var pleaseConfirm = confirm("Do you still want to make a password?")
   if (pleaseConfirm === true) {
@@ -47,34 +48,26 @@ function areYouSure() {
 
 // This section is a function that creates an array of password criteria based on user input.
 function passwordCharacters() {
-  var guaranteedCriteria = "";
+  var guaranteedCriteria = ""; // This is a variable to ensure at least one of all criteria selected is included. 
   var includeLower = confirm("Would you like to include lowercase letters in your password?");
-  var lowerCaseSelect = "";
   if (includeLower === true) {
     userInput += lowerCase
-    lowerCaseSelect = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-    guaranteedCriteria += lowerCaseSelect;
+    guaranteedCriteria += lowerCase[Math.floor(Math.random() * lowerCase.length)];
   };
   var includeUpper = confirm("Would you like to include uppercase letters in your password?");
-  var upperCaseSelect = "";
   if (includeUpper === true) {
     userInput += upperCase
-    upperCaseSelect = upperCase[Math.floor(Math.random() * upperCase.length)];
-    guaranteedCriteria += upperCaseSelect;
+    guaranteedCriteria += upperCase[Math.floor(Math.random() * upperCase.length)];
   };
   var includeNumbers = confirm("Would you like to include numbers in your password?");
-  var numbersSelect = "";
   if (includeNumbers === true) {
     userInput += numbers
-    numbersSelect = numbers[Math.floor(Math.random() * numbers.length)];
-    guaranteedCriteria += numbersSelect;
+    guaranteedCriteria += numbers[Math.floor(Math.random() * numbers.length)];
   };
   var includeSpecial = confirm("Would you like to include special characters in your password?");
-  var specialSelect = "";
   if (includeSpecial === true) {
     userInput += specialCharacters
-    specialSelect = specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
-    guaranteedCriteria += specialSelect;
+    guaranteedCriteria += specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
   };
   if (includeLower === false && includeUpper === false && includeNumbers === false && includeSpecial === false) {
     var restart = confirm("Please include at least one password criteria.")

@@ -6,21 +6,17 @@ I have created a random password generator webpage. When a user visits this page
 
 I was motivated to build this webpage to help make passwords for the numerous logins that I have. By using this site, it helps create a more secure password that can not be simply identified. Building this helped me learn many different features within javascript. 
 
-First I used a prompt method to verify the characters a user would like. 
+First I created a function, that when the user presses the Generate Password button, starts the process. This asks the user how many characters they would like the password to be. 
 
-![Screenshot](./assets/images/prompt-to-start.png)
+![Screenshot](./assets/images/function-to-generate-password.png)
 
-I also used confirm method to ask what criteria a user would like to include in the password.
+Next I used a confirm method to ask what criteria the user would like to include in the password.
 
-![Screenshot](./assets/images/confirm-criteria-to-include.png)
+![Screenshot](./assets/images/confirm-user-criteria-wanted.png)
 
-Then I created a for loop to make the password using the amount of characters a user chose as well as the criteria that they wished for the password to include. 
+Then I created a for loop to make the password using the amount of characters a user chose as well as the criteria that they wished for the password to include. This also makes sure to include the guaranteed criteria selected.
 
-![Screenshot](./assets/images/for-loop-make-password.png)
-
-Lastly, I used a if statement to check that the password that was created includes all criteria required by the user. 
-
-![Screenshot](./assets/images/verify-included-criteria.png)
+![Screenshot](./assets/images/function-creates-password-based-on-input.png)
 
 ## Usage
 
