@@ -76,6 +76,7 @@ function passwordCharacters() {
     } else {
       areYouSure();
     }
+    return;
   }
 
   // These lines tell you the array of criteria to be used for the password.
